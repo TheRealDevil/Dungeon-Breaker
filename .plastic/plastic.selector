@@ -1,0 +1,4 @@
+repository "Rougelike/Rougelike@7972504307652@cloud"
+  path "/"
+    br "/main"
+    co "/main"
