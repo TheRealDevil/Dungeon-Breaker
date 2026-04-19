@@ -285,7 +285,7 @@ Transform:
   m_GameObject: {fileID: 1764354268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -304,8 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908a03a42f48ffa48b322623dd74ec18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardManager
-  Width: 8
-  Height: 8
+  Width: 10
+  Height: 10
   GroundFiles:
   - {fileID: 11400000, guid: c980891f78f5fa44daa75988b8f68406, type: 2}
   - {fileID: 11400000, guid: 957cbb8b81264464396ce1057f437c28, type: 2}
