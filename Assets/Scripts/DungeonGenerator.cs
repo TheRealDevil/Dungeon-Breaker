@@ -36,7 +36,9 @@ public class DungeonGenerator : MonoBehaviour
         dungeonLayout.Add(new RoomData(currentPos, RoomType.Start));
 
         //random tvorba místností
-        while (dungeonLayout.Count < numberOfRooms)
+        int failedAttempts = 0;
+        const int maxFailedAttempts = 100;
+        while (dungeonLayout.Count < numberOfRooms && failedAttempts < maxFailedAttempts)
         {
             currentPos += GetRandomDirection();
 
@@ -44,6 +46,11 @@ public class DungeonGenerator : MonoBehaviour
             if (!IsPositionOccupied(currentPos))
             {
                 dungeonLayout.Add(new RoomData(currentPos, RoomType.Enemy));
+                failedAttempts = 0;
+            }
+            else
+            {
+                failedAttempts++;
             }
         }
 
@@ -76,12 +83,14 @@ public class DungeonGenerator : MonoBehaviour
 
     void SetBossRoom()
     {
-        RoomData furthestRoom = dungeonLayout[0];
+        RoomData furthestRoom = null;
         float maxDistance = 0;
 
-        //boss místnost má být nejdál
+        //boss místnost má být nejdál (ale ne Start roomka)
         foreach (var room in dungeonLayout)
         {
+            if (room.type == RoomType.Start) continue; // Skip Start room
+            
             float distance = Vector2.Distance(Vector2.zero, (Vector2)room.gridPos);
             if (distance > maxDistance)
             {
@@ -89,6 +98,10 @@ public class DungeonGenerator : MonoBehaviour
                 furthestRoom = room;
             }
         }
-        furthestRoom.type = RoomType.Boss;
+        
+        if (furthestRoom != null)
+        {
+            furthestRoom.type = RoomType.Boss;
+        }
     }
 }
