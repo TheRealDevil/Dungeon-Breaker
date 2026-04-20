@@ -17,7 +17,14 @@ public class DungeonGenerator : MonoBehaviour
     }
 
     [Header("Generator Settings")]
-    public int numberOfRooms = 10;
+    public int numberOfRooms = 5;
+    public int roomSize = 10; //velikost místnosti v jednotkách gridu
+
+    [Header("Room Prefabs")]
+    public GameObject startRoomPrefab;
+    public GameObject enemyRoomPrefab;
+    public GameObject bossRoomPrefab;
+    public GameObject treasureRoomPrefab;
 
     //ukláda kompletní blueprint mapy
     private List<RoomData> dungeonLayout = new List<RoomData>();
@@ -25,6 +32,7 @@ public class DungeonGenerator : MonoBehaviour
     void Start()
     {
         GenerateBlueprint();
+        SpawnRooms();
     }
 
     void GenerateBlueprint()
@@ -61,6 +69,31 @@ public class DungeonGenerator : MonoBehaviour
         foreach (var room in dungeonLayout)
         {
             Debug.Log($"Místnost na {room.gridPos} je {room.type}");
+        }
+    }
+
+    //funkce na spawnování místností
+    void SpawnRooms() {
+        foreach (RoomData room in dungeonLayout) {
+            //výpočet pozice v Unity světě
+            Vector3 spawnPos = new Vector3(room.gridPos.x * roomSize, room.gridPos.y * roomSize, 0);
+
+            GameObject prefabToSpawn = GetPrefabByType(room.type);
+
+            if (prefabToSpawn != null) {
+                GameObject newRoom = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+                newRoom.name = $"{room.type} Room ({room.gridPos.x}, {room.gridPos.y})";
+                newRoom.transform.parent = this.transform; //organizace v hierarchii
+            }
+        }
+    }
+
+    GameObject GetPrefabByType(RoomType type) {
+        switch (type) {
+            case RoomType.Start: return startRoomPrefab;
+            case RoomType.Boss: return bossRoomPrefab;
+            case RoomType.Treasure: return treasureRoomPrefab;
+            default: return enemyRoomPrefab; //defaultně enemy room
         }
     }
 
