@@ -1,2 +1,2 @@
 # Rougelike
-a rougelike game base on the course from unity
+a rougelike game based on the game Soul Knight
