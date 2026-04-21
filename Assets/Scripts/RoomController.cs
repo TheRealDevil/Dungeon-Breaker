@@ -1,7 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting;
 using UnityEngine;
-
 
 public class RoomController : MonoBehaviour
 {
@@ -16,7 +13,15 @@ public class RoomController : MonoBehaviour
         OpenDoors();
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the player entered the room
+        // Check to see if the room is already cleared or if the player is already inside
+        if (other.CompareTag("Player") && !isCleared && !playerInside)
+        {
+            OnPlayerEnter();
+        }
+    }
     //Called when player enters the room trigger
     public void OnPlayerEnter()
     {
