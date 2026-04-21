@@ -1,9 +1,13 @@
 using System.Security.Cryptography.X509Certificates;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class RoomController : MonoBehaviour
 {
+    [Header("References")]
     public GameObject doorParent; // Parent object for doors
+    [Header("Room Status")]
     public bool isCleared = false; // Flag to check if the room is cleared
     private bool playerInside = false; // Flag to check if the player is inside the room
 
@@ -12,6 +16,7 @@ public class RoomController : MonoBehaviour
         OpenDoors();
     }
 
+    
     //Called when player enters the room trigger
     public void OnPlayerEnter()
     {
