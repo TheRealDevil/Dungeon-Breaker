@@ -18,7 +18,7 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Generator Settings")]
     public int numberOfRooms = 5;
-    public int roomSize = 10; //velikost místnosti v jednotkách gridu
+    public int roomSize = 25; //velikost místnosti v jednotkách gridu
 
     [Header("Room Prefabs")]
     public GameObject startRoomPrefab;
