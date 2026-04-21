@@ -15,11 +15,17 @@ public class RoomController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("An object entered the room trigger: " + other.name); // Log the name of the object that entered the trigger
         // Check if the player entered the room
         // Check to see if the room is already cleared or if the player is already inside
         if (other.CompareTag("Player") && !isCleared && !playerInside)
         {
+            Debug.Log("Player entered the room. Starting encounter..."); // Log that the player has entered the room
             OnPlayerEnter();
+        }
+        else
+        {
+            Debug.Log("The object was not tagged as Player. It was tagged as: " + other.tag);
         }
     }
     //Called when player enters the room trigger
