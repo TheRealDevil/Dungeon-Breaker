@@ -2521,7 +2521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4652801045052532386
 Transform:
   m_ObjectHideFlags: 0
@@ -2659,7 +2659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &760323540660268649
 Transform:
   m_ObjectHideFlags: 0
@@ -2797,7 +2797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7815125269520176756
 Transform:
   m_ObjectHideFlags: 0
@@ -2935,7 +2935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7246245513445523685
 Transform:
   m_ObjectHideFlags: 0
@@ -3066,6 +3066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8688001085319108247}
   - component: {fileID: 2780479381753562711}
+  - component: {fileID: 4557691208469727436}
   m_Layer: 0
   m_Name: RoomTrigger
   m_TagString: Untagged
@@ -3134,6 +3135,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 12.10289, y: 12.12291}
   m_EdgeRadius: 0
+--- !u!114 &4557691208469727436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327423268062587770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4daf5637146db4eb7f14418e0e4fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomController
+  doorParent: {fileID: 8218179647576496378}
+  isCleared: 0
 --- !u!1 &8218179647576496378
 GameObject:
   m_ObjectHideFlags: 0

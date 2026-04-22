@@ -8,13 +8,19 @@ public class RoomController : MonoBehaviour
     public bool isCleared = false; // Flag to check if the room is cleared
     private bool playerInside = false; // Flag to check if the player is inside the room
 
-    void Start()
+    void Awake()
     {
+        isCleared = false;
+        playerInside = false;
         OpenDoors();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("--- Trigger Contact ---");
+        Debug.Log("I am " + gameObject.name);
+        Debug.Log("I was touched by " + other.name);
+        Debug.Log("That object has tag: [" + other.tag + "]");
         Debug.Log("An object entered the room trigger: " + other.name); // Log the name of the object that entered the trigger
         // Check if the player entered the room
         // Check to see if the room is already cleared or if the player is already inside
@@ -39,7 +45,18 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    public void CloseDoors() => doorParent.SetActive(true);
+    public void CloseDoors()
+    {
+        if (doorParent != null)
+        {
+            doorParent.SetActive(true);
+            Debug.Log("Doors have been set to active " + doorParent.name);
+        }
+        else
+        {
+            Debug.LogError("Door parent is missing on " + gameObject.name);
+        }
+    }
     public void OpenDoors() => doorParent.SetActive(false);
     
     void SpawnEnemies()
