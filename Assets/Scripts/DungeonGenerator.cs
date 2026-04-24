@@ -18,7 +18,7 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Generator Settings")]
     public int numberOfRooms = 5;
-    public int roomSize = 25; //velikost místnosti v jednotkách gridu
+    public int roomSize = 25; //size of the rooms in world units
 
     [Header("Room Prefabs")]
     public GameObject startRoomPrefab;
@@ -26,7 +26,7 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject bossRoomPrefab;
     public GameObject treasureRoomPrefab;
 
-    //ukláda kompletní blueprint mapy
+    //Saves the whole layout of the dungeon
     private List<RoomData> dungeonLayout = new List<RoomData>();
 
     void Start()
@@ -40,17 +40,17 @@ public class DungeonGenerator : MonoBehaviour
         dungeonLayout.Clear();
         Vector2Int currentPos = Vector2Int.zero;
 
-        //startovní roomka na 0.0
+        //Start room is always at (0,0)
         dungeonLayout.Add(new RoomData(currentPos, RoomType.Start));
 
-        //random tvorba místností
+        //Random room generation with a random walk algorithm
         int failedAttempts = 0;
         const int maxFailedAttempts = 100;
         while (dungeonLayout.Count < numberOfRooms && failedAttempts < maxFailedAttempts)
         {
             currentPos += GetRandomDirection();
 
-            //kontrola jestli tam už něco je
+            //Check if the position is already occupied
             if (!IsPositionOccupied(currentPos))
             {
                 dungeonLayout.Add(new RoomData(currentPos, RoomType.Enemy));
@@ -62,28 +62,43 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
-        //generace boss roomky
+        //Boss room generation
         SetBossRoom();
 
-        //debug vizulizace
+        //Debug log of the generated layout
         foreach (var room in dungeonLayout)
         {
             Debug.Log($"Místnost na {room.gridPos} je {room.type}");
         }
     }
 
-    //funkce na spawnování místností
+    //Function for spawning rooms based on the generated blueprint
     void SpawnRooms() {
+        
+        //List of room coordinates to check for neighbors
+        List<Vector2Int> occupiedPositions = new List<Vector2Int>();
+        foreach (var room in dungeonLayout) occupiedPositions.Add(room.gridPos);
+
         foreach (RoomData room in dungeonLayout) {
-            //výpočet pozice v Unity světě
+            //Calculation of world position based on grid position and room size
             Vector3 spawnPos = new Vector3(room.gridPos.x * roomSize, room.gridPos.y * roomSize, 0);
 
             GameObject prefabToSpawn = GetPrefabByType(room.type);
-
             if (prefabToSpawn != null) {
                 GameObject newRoom = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
                 newRoom.name = $"{room.type} Room ({room.gridPos.x}, {room.gridPos.y})";
-                newRoom.transform.parent = this.transform; //organizace v hierarchii
+                newRoom.transform.parent = this.transform; //Organization in the hierarchy
+
+                RoomController controller = newRoom.GetComponent<RoomController>();
+                if (controller != null)
+                {
+                    controller.SetupRoom(room.gridPos, occupiedPositions);
+                    controller.isStartRoom = room.type == RoomType.Start;
+                }
+            }
+            else
+            {
+                Debug.LogError($"Missing prefab for room type {room.type}");
             }
         }
     }
@@ -93,7 +108,7 @@ public class DungeonGenerator : MonoBehaviour
             case RoomType.Start: return startRoomPrefab;
             case RoomType.Boss: return bossRoomPrefab;
             case RoomType.Treasure: return treasureRoomPrefab;
-            default: return enemyRoomPrefab; //defaultně enemy room
+            default: return enemyRoomPrefab; //Default is enemy room
         }
     }
 
@@ -119,10 +134,10 @@ public class DungeonGenerator : MonoBehaviour
         RoomData furthestRoom = null;
         float maxDistance = 0;
 
-        //boss místnost má být nejdál (ale ne Start roomka)
+        //The boss room is set the furthest from the start room
         foreach (var room in dungeonLayout)
         {
-            if (room.type == RoomType.Start) continue; // Skip Start room
+            if (room.type == RoomType.Start) continue; //Skip start room
             
             float distance = Vector2.Distance(Vector2.zero, (Vector2)room.gridPos);
             if (distance > maxDistance)
