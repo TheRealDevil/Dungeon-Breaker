@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonGenerator
   numberOfRooms: 5
-  roomSize: 20
+  roomSize: 25
   startRoomPrefab: {fileID: 3323754293330935808, guid: 9cb565aafcd21af4799db89a2347b71f, type: 3}
   enemyRoomPrefab: {fileID: 3323754293330935808, guid: 540e2e96d43d93c4096b3c3153e1a01b, type: 3}
   bossRoomPrefab: {fileID: 3323754293330935808, guid: 68bc1b98acd49424393b92403ba7cf01, type: 3}

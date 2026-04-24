@@ -48,12 +48,14 @@ public class DungeonGenerator : MonoBehaviour
         const int maxFailedAttempts = 100;
         while (dungeonLayout.Count < numberOfRooms && failedAttempts < maxFailedAttempts)
         {
-            currentPos += GetRandomDirection();
+            //Pick a random room that we already spawned
+            RoomData randomRoom = dungeonLayout[Random.Range(0, dungeonLayout.Count)];
+            Vector2Int potentialPos = randomRoom.gridPos + GetRandomDirection();
 
             //Check if the position is already occupied
-            if (!IsPositionOccupied(currentPos))
+            if (!IsPositionOccupied(potentialPos))
             {
-                dungeonLayout.Add(new RoomData(currentPos, RoomType.Enemy));
+                dungeonLayout.Add(new RoomData(potentialPos, RoomType.Enemy));
                 failedAttempts = 0;
             }
             else
