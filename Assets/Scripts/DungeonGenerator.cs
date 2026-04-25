@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
@@ -33,6 +34,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         GenerateBlueprint();
         SpawnRooms();
+        SpawnHallways();
     }
 
     void GenerateBlueprint()
@@ -105,6 +107,34 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
+    [Header("Hallway Settings")]
+    public GameObject hallwayPrefab;
+
+    void SpawnHallways() {
+        //This function can be implemented to spawn hallways between rooms based on their positions
+        foreach (RoomData room in dungeonLayout) {
+            //Check for neighbor to the right and top to avoid double spawning
+            Vector2Int[] directionsToBridge = {Vector2Int.right, Vector2Int.up};
+
+            foreach (Vector2Int dir in directionsToBridge) {
+                Vector2Int neighborPos = room.gridPos + dir;
+                if (IsPositionOccupied(neighborPos)) {
+                    //Calculate the midpoit between the two rooms for placement
+                    Vector3 room1Pos = new Vector3(room.gridPos.x * roomSize, room.gridPos.y * roomSize, 0);
+                    Vector3 room2Pos = new Vector3(neighborPos.x * roomSize, neighborPos.y * roomSize, 0);
+                    Vector3 spawnPos = (room1Pos + room2Pos) / 2;
+
+                    GameObject hallway = Instantiate(hallwayPrefab, spawnPos, Quaternion.identity);
+                    hallway.transform.parent = this.transform; //Organization in the hierarchy
+
+                    //Rotation of the hallway based on direction
+                    if (dir == Vector2Int.up) hallway.transform.rotation = Quaternion.Euler(0, 0, 90);
+
+                }
+            }
+        }
+    }
+
     GameObject GetPrefabByType(RoomType type) {
         switch (type) {
             case RoomType.Start: return startRoomPrefab;
@@ -141,7 +171,7 @@ public class DungeonGenerator : MonoBehaviour
         {
             if (room.type == RoomType.Start) continue; //Skip start room
             
-            float distance = Vector2.Distance(Vector2.zero, (Vector2)room.gridPos);
+            float distance = UnityEngine.Vector2.Distance(UnityEngine.Vector2.zero, (Vector2)room.gridPos);
             if (distance > maxDistance)
             {
                 maxDistance = distance;

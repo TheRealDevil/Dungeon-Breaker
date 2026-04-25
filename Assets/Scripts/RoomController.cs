@@ -19,21 +19,21 @@ public class RoomController : MonoBehaviour
     }
 
     [Header("Wall/Door Visuals")]
-    public GameObject northDoor, southDoor, eastDoor, westDoor;
+    //public GameObject northDoor, southDoor, eastDoor, westDoor;
     public GameObject northWall, southWall, eastWall, westWall;
 
     public void SetupRoom(Vector2Int gridPos, List<Vector2Int> allRoomPositions) {
         // Check neighbors and enable/disable doors and walls
-        northDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.up));
+        //northDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.up));
         northWall.SetActive(!allRoomPositions.Contains(gridPos + Vector2Int.up));
 
-        southDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.down));
+        //southDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.down));
         southWall.SetActive(!allRoomPositions.Contains(gridPos + Vector2Int.down));
 
-        eastDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.right));
+        //eastDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.right));
         eastWall.SetActive(!allRoomPositions.Contains(gridPos + Vector2Int.right));
 
-        westDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.left));
+        //westDoor.SetActive(allRoomPositions.Contains(gridPos + Vector2Int.left));
         westWall.SetActive(!allRoomPositions.Contains(gridPos + Vector2Int.left));
     }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1326139988074481381}
   - component: {fileID: 5204150832163515626}
   m_Layer: 0
-  m_Name: NorthWall
+  m_Name: northWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,10 +48,6 @@ MonoBehaviour:
   doorParent: {fileID: 0}
   isCleared: 0
   isStartRoom: 0
-  northDoor: {fileID: 0}
-  southDoor: {fileID: 0}
-  eastDoor: {fileID: 0}
-  westDoor: {fileID: 0}
   northWall: {fileID: 0}
   southWall: {fileID: 0}
   eastWall: {fileID: 0}
@@ -66,7 +62,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3869256476878786420}
   m_Layer: 0
-  m_Name: SouthWall
+  m_Name: southWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2597,14 +2593,10 @@ MonoBehaviour:
   doorParent: {fileID: 8218179647576496378}
   isCleared: 0
   isStartRoom: 0
-  northDoor: {fileID: 0}
-  southDoor: {fileID: 0}
-  eastDoor: {fileID: 0}
-  westDoor: {fileID: 0}
-  northWall: {fileID: 0}
-  southWall: {fileID: 0}
-  eastWall: {fileID: 0}
-  westWall: {fileID: 0}
+  northWall: {fileID: 4226600253672812828}
+  southWall: {fileID: 7839727296791125504}
+  eastWall: {fileID: 8668065859123915211}
+  westWall: {fileID: 3429016075076432714}
 --- !u!1 &3429016075076432714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,7 +2609,7 @@ GameObject:
   - component: {fileID: 6473782662826710491}
   - component: {fileID: 4494016409836504315}
   m_Layer: 0
-  m_Name: Square
+  m_Name: WWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2685,7 +2677,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -287887721
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6892008992081836568, guid: eb02bc4c077a26c49bbbf1ad8419090f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2760,7 +2752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4652801045052532386
 Transform:
   m_ObjectHideFlags: 0
@@ -2961,7 +2953,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -287887721
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6892008992081836568, guid: eb02bc4c077a26c49bbbf1ad8419090f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3036,7 +3028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &760323540660268649
 Transform:
   m_ObjectHideFlags: 0
@@ -3167,7 +3159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449584671013762286}
   m_Layer: 0
-  m_Name: WestWall
+  m_Name: westWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3206,7 +3198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7815125269520176756
 Transform:
   m_ObjectHideFlags: 0
@@ -3344,7 +3336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7246245513445523685
 Transform:
   m_ObjectHideFlags: 0
@@ -3475,7 +3467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4013458179696294397}
   m_Layer: 0
-  m_Name: EastWall
+  m_Name: eastWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3591,10 +3583,6 @@ MonoBehaviour:
   doorParent: {fileID: 8218179647576496378}
   isCleared: 0
   isStartRoom: 0
-  northDoor: {fileID: 0}
-  southDoor: {fileID: 0}
-  eastDoor: {fileID: 0}
-  westDoor: {fileID: 0}
   northWall: {fileID: 0}
   southWall: {fileID: 0}
   eastWall: {fileID: 0}
@@ -3679,7 +3667,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -287887721
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6892008992081836568, guid: eb02bc4c077a26c49bbbf1ad8419090f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4634,7 +4622,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -287887721
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6892008992081836568, guid: eb02bc4c077a26c49bbbf1ad8419090f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
