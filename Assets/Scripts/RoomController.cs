@@ -1,15 +1,16 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
     [Header("References")]
-    public GameObject doorParent; // Parent object for doors
+    public GameObject doorParent; //Parent object for doors
     [Header("Room Status")]
-    public bool isCleared = false; // Flag to check if the room is cleared
-    public bool isStartRoom = false; // Flag to prevent start room from closing doors
-    private bool playerInside = false; // Flag to check if the player is inside the room
+    public bool isCleared = false; //Flag to check if the room is cleared
+    public bool isStartRoom = false; //Flag to prevent start room from closing doors
+    private bool playerInside = false; //Flag to check if the player is inside the room
+    private bool isCombatActive = false; //Flag to check if combat is active in the room
+    public DungeonGenerator.RoomType roomType; //Type of the room (e.g., enemy, boss, treasure)
 
     void Awake()
     {
@@ -63,6 +64,7 @@ public class RoomController : MonoBehaviour
             Debug.Log("The object was not tagged as Player or the room is already active.");
         }
     }
+
     //Called when player enters the room trigger
     public void OnPlayerEnter()
     {
@@ -75,8 +77,25 @@ public class RoomController : MonoBehaviour
         if (!isCleared && !playerInside)
         {
             playerInside = true;
-            CloseDoors();
-            SpawnEnemies();
+            
+            //Trigger combat encounter based on room type
+            if (roomType == DungeonGenerator.RoomType.Enemy)
+            {
+                CloseDoors();
+                SpawnEnemies();
+                isCombatActive = true;    
+            }
+            else if (roomType == DungeonGenerator.RoomType.Boss)
+            {
+                CloseDoors();
+                SpawnEnemies(); //You can replace this with a different function to spawn a boss instead of regular enemies
+                isCombatActive = true;
+            }
+            else if (roomType == DungeonGenerator.RoomType.Treasure)
+            {
+                //Implement treasure room logic here (e.g., spawn chests, give rewards)
+                Debug.Log("Entered a treasure room! Implement treasure logic here.");
+            }
         }
     }
 
@@ -94,9 +113,53 @@ public class RoomController : MonoBehaviour
     }
     public void OpenDoors() => doorParent.SetActive(false);
     
+    [Header("Enemy Settings")]
+    public GameObject enemyPrefab; //Reference to the enemy prefab
+    public int minEnemies = 1; //Minimum number of enemies to spawn
+    public int maxEnemies = 3; //Maximum number of enemies to spawn
+    private List<GameObject> activeEnemies = new List<GameObject>(); //List to keep track of active enemies
+
+    //Function to spawn enemies in the room
     void SpawnEnemies()
     {
         Debug.Log("Spawning enemies in the room...");
-        // Add enemy spawning logic here
+        
+        int amount = Random.Range(minEnemies, maxEnemies + 1);
+
+        for (int i = 0; i < amount; i++)
+        {
+            //Generate a random position inside the room while staying away from walls
+            Vector3 spawnOffset = new Vector3(Random.Range(-3.5f, 3.5f), Random.Range(-3.5f, 3.5f), 0);
+            GameObject enemy = Instantiate(enemyPrefab, transform.position + spawnOffset, Quaternion.identity);
+
+            //Set the room as the parent of the enemy for organization
+            enemy.transform.parent = this.transform;
+            activeEnemies.Add(enemy);
+        }
+    }
+
+    void Update()
+    {
+        // Check if the room is active and if all enemies are defeated
+        if (isCombatActive && playerInside && !isCleared && activeEnemies.Count > 0)
+        {
+            //Remove any null (killed) enemies form list
+            activeEnemies.RemoveAll(item => item == null);
+
+            if (activeEnemies.Count == 0)
+            {
+                isCombatActive = false;
+                RoomCleared();
+            }
+        }
+    }
+
+    //Function called when all enemies in the room are defeated
+    void RoomCleared()
+    {
+        isCleared = true;
+        playerInside = false;
+        OpenDoors();
+        Debug.Log("Room cleared. Doors are now open.");
     }
 }

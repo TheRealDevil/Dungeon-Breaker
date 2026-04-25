@@ -97,6 +97,7 @@ public class DungeonGenerator : MonoBehaviour
                 {
                     controller.SetupRoom(room.gridPos, occupiedPositions);
                     controller.isStartRoom = room.type == RoomType.Start;
+                    controller.roomType = room.type;
                 }
             }
             else
@@ -137,25 +138,6 @@ public class DungeonGenerator : MonoBehaviour
 
                         hallway.transform.position += new UnityEngine.Vector3(verticalXOffset, 0, 0);
                     }
-
-
-                    /*
-                    if (dir == Vector2Int.right) {
-                        //Correctional vector for proper alignment of the horizontal hallway sprite
-                        hallway.transform.position += new Vector3(-3.5f, -2f, 0f);
-                    } 
-                    else if (dir == Vector2Int.up) {
-                        //Rotation of the hallway based on direction
-                        hallway.transform.rotation = Quaternion.Euler(0, 0, 90);
-                        //Corretional vector for proper alignment of the vertical hallway sprite
-                        hallway.transform.position += new Vector3(2f, -3.5f, 0f);
-                    }
-                    /*
-                    //Rotation of the hallway based on direction
-                    if (dir == Vector2Int.up) hallway.transform.rotation = Quaternion.Euler(0, 0, 90);
-                    //Corretional vector for proper alignment of the vertical hallway sprite
-                    hallway.transform.position += new Vector3(1.5f, 0f, 0f);*/
-
                 }
             }
         }

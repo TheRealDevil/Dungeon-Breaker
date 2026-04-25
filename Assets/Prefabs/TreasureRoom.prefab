@@ -2647,10 +2647,14 @@ MonoBehaviour:
   doorParent: {fileID: 8218179647576496378}
   isCleared: 0
   isStartRoom: 0
+  roomType: 3
   northWall: {fileID: 8223118097580884095}
   southWall: {fileID: 2628711046598326514}
   eastWall: {fileID: 4546007788424822480}
   westWall: {fileID: 5602511511152002915}
+  enemyPrefab: {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
+  minEnemies: 1
+  maxEnemies: 3
 --- !u!1 &4016049064723323496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3106,7 +3110,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2666832955269285150}
-  - component: {fileID: 327463922155748683}
   m_Layer: 0
   m_Name: northWall
   m_TagString: Untagged
@@ -3130,25 +3133,6 @@ Transform:
   - {fileID: 6855732326565439920}
   m_Father: {fileID: 1049855601418921155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &327463922155748683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464608874448928116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4daf5637146db4eb7f14418e0e4fd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomController
-  doorParent: {fileID: 0}
-  isCleared: 0
-  isStartRoom: 0
-  northWall: {fileID: 8223118097580884095}
-  southWall: {fileID: 2628711046598326514}
-  eastWall: {fileID: 4546007788424822480}
-  westWall: {fileID: 5602511511152002915}
 --- !u!1 &5588829608105275433
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,7 +3665,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7327423268062587770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e4daf5637146db4eb7f14418e0e4fd2, type: 3}
   m_Name: 
@@ -3689,10 +3673,14 @@ MonoBehaviour:
   doorParent: {fileID: 8218179647576496378}
   isCleared: 0
   isStartRoom: 0
+  roomType: 3
   northWall: {fileID: 0}
   southWall: {fileID: 0}
   eastWall: {fileID: 0}
   westWall: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  minEnemies: 1
+  maxEnemies: 3
 --- !u!1 &7684346461929306962
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4669036480406358254}
-  - component: {fileID: 47192685759841893}
   m_Layer: 0
   m_Name: northWall
   m_TagString: Untagged
@@ -33,25 +32,6 @@ Transform:
   - {fileID: 1096130609579279894}
   m_Father: {fileID: 1049855601418921155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &47192685759841893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683746726138292374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4daf5637146db4eb7f14418e0e4fd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomController
-  doorParent: {fileID: 0}
-  isCleared: 0
-  isStartRoom: 0
-  northWall: {fileID: 0}
-  southWall: {fileID: 0}
-  eastWall: {fileID: 0}
-  westWall: {fileID: 0}
 --- !u!1 &1839631774400163198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,10 +2573,14 @@ MonoBehaviour:
   doorParent: {fileID: 8218179647576496378}
   isCleared: 0
   isStartRoom: 0
+  roomType: 2
   northWall: {fileID: 8871881794776438665}
   southWall: {fileID: 4584691054739662495}
   eastWall: {fileID: 5209807562822867862}
   westWall: {fileID: 7937801756121230487}
+  enemyPrefab: {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
+  minEnemies: 1
+  maxEnemies: 3
 --- !u!1 &4016049064723323496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,7 +3483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8688001085319108247}
   - component: {fileID: 2780479381753562711}
-  - component: {fileID: 4557691208469727436}
+  - component: {fileID: 4084931993692676750}
   m_Layer: 0
   m_Name: RoomTrigger
   m_TagString: Untagged
@@ -3568,7 +3552,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 12.10289, y: 12.12291}
   m_EdgeRadius: 0
---- !u!114 &4557691208469727436
+--- !u!114 &4084931993692676750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3583,10 +3567,14 @@ MonoBehaviour:
   doorParent: {fileID: 8218179647576496378}
   isCleared: 0
   isStartRoom: 0
-  northWall: {fileID: 0}
-  southWall: {fileID: 0}
-  eastWall: {fileID: 0}
-  westWall: {fileID: 0}
+  roomType: 2
+  northWall: {fileID: 8871881794776438665}
+  southWall: {fileID: 4584691054739662495}
+  eastWall: {fileID: 5209807562822867862}
+  westWall: {fileID: 7937801756121230487}
+  enemyPrefab: {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
+  minEnemies: 1
+  maxEnemies: 3
 --- !u!1 &7937801756121230487
 GameObject:
   m_ObjectHideFlags: 0
@@ -4347,8 +4335,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -287887721
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
