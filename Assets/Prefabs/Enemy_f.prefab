@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6154825614684454471}
   - component: {fileID: 7711060413614258498}
   - component: {fileID: 6686208788189130095}
+  - component: {fileID: 7397756830790978519}
+  - component: {fileID: 7552111895367866179}
   m_Layer: 0
   m_Name: Enemy_f
   m_TagString: Enemy
@@ -166,3 +168,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7397756830790978519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635093369696606961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac284a108dc7ba468b3c9a5ef0ba092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 20
+--- !u!114 &7552111895367866179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635093369696606961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883b698b6aac3ea45bf35e2dc664cf66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  moveSpeed: 3
+  detectionRange: 5
