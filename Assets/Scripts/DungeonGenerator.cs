@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
@@ -110,15 +109,21 @@ public class DungeonGenerator : MonoBehaviour
     [Header("Hallway Settings")]
     public GameObject hallwayPrefab;
 
+    [Header("Hallway Alignment Offset")]
+    public float verticalXOffset = 2f;
+
     void SpawnHallways() {
         //This function can be implemented to spawn hallways between rooms based on their positions
-        foreach (RoomData room in dungeonLayout) {
+        List<Vector2Int> occupied = new List<Vector2Int>();
+        foreach (var room in dungeonLayout) occupied.Add(room.gridPos);
+
+        foreach (var room in dungeonLayout) {
             //Check for neighbor to the right and top to avoid double spawning
             Vector2Int[] directionsToBridge = {Vector2Int.right, Vector2Int.up};
 
             foreach (Vector2Int dir in directionsToBridge) {
                 Vector2Int neighborPos = room.gridPos + dir;
-                if (IsPositionOccupied(neighborPos)) {
+                if (occupied.Contains(neighborPos)) {
                     //Calculate the midpoit between the two rooms for placement
                     Vector3 room1Pos = new Vector3(room.gridPos.x * roomSize, room.gridPos.y * roomSize, 0);
                     Vector3 room2Pos = new Vector3(neighborPos.x * roomSize, neighborPos.y * roomSize, 0);
@@ -127,8 +132,29 @@ public class DungeonGenerator : MonoBehaviour
                     GameObject hallway = Instantiate(hallwayPrefab, spawnPos, Quaternion.identity);
                     hallway.transform.parent = this.transform; //Organization in the hierarchy
 
+                    if (dir == Vector2Int.up) {
+                        hallway.transform.rotation = Quaternion.Euler(0, 0, 90);
+
+                        hallway.transform.position += new UnityEngine.Vector3(verticalXOffset, 0, 0);
+                    }
+
+
+                    /*
+                    if (dir == Vector2Int.right) {
+                        //Correctional vector for proper alignment of the horizontal hallway sprite
+                        hallway.transform.position += new Vector3(-3.5f, -2f, 0f);
+                    } 
+                    else if (dir == Vector2Int.up) {
+                        //Rotation of the hallway based on direction
+                        hallway.transform.rotation = Quaternion.Euler(0, 0, 90);
+                        //Corretional vector for proper alignment of the vertical hallway sprite
+                        hallway.transform.position += new Vector3(2f, -3.5f, 0f);
+                    }
+                    /*
                     //Rotation of the hallway based on direction
                     if (dir == Vector2Int.up) hallway.transform.rotation = Quaternion.Euler(0, 0, 90);
+                    //Corretional vector for proper alignment of the vertical hallway sprite
+                    hallway.transform.position += new Vector3(1.5f, 0f, 0f);*/
 
                 }
             }
