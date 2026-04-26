@@ -114,7 +114,7 @@ public class RoomController : MonoBehaviour
     public void OpenDoors() => doorParent.SetActive(false);
     
     [Header("Enemy Settings")]
-    public GameObject enemyPrefab; //Reference to the enemy prefab
+    public GameObject[] enemyPrefab; //Reference to the enemy prefab
     public int minEnemies = 1; //Minimum number of enemies to spawn
     public int maxEnemies = 3; //Maximum number of enemies to spawn
     private List<GameObject> activeEnemies = new List<GameObject>(); //List to keep track of active enemies
@@ -130,8 +130,11 @@ public class RoomController : MonoBehaviour
         {
             //Generate a random position inside the room while staying away from walls
             Vector3 spawnOffset = new Vector3(Random.Range(-3.5f, 3.5f), Random.Range(-3.5f, 3.5f), 0);
-            GameObject enemy = Instantiate(enemyPrefab, transform.position + spawnOffset, Quaternion.identity);
 
+            //Pick a random enemy type from the array
+            GameObject randomEnemyPrefab = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
+
+            GameObject enemy = Instantiate(randomEnemyPrefab, transform.position + spawnOffset, Quaternion.identity);
             //Set the room as the parent of the enemy for organization
             enemy.transform.parent = this.transform;
             activeEnemies.Add(enemy);

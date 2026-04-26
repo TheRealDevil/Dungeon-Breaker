@@ -2578,8 +2578,10 @@ MonoBehaviour:
   southWall: {fileID: 7839727296791125504}
   eastWall: {fileID: 8668065859123915211}
   westWall: {fileID: 3429016075076432714}
-  enemyPrefab: {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
-  minEnemies: 1
+  enemyPrefab:
+  - {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
+  - {fileID: 3635093369696606961, guid: 6be984798c4af4543ab520a8dcb510cb, type: 3}
+  minEnemies: 2
   maxEnemies: 5
 --- !u!1 &3429016075076432714
 GameObject:
@@ -3572,9 +3574,11 @@ MonoBehaviour:
   southWall: {fileID: 7839727296791125504}
   eastWall: {fileID: 8668065859123915211}
   westWall: {fileID: 3429016075076432714}
-  enemyPrefab: {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
-  minEnemies: 1
-  maxEnemies: 3
+  enemyPrefab:
+  - {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
+  - {fileID: 3635093369696606961, guid: 6be984798c4af4543ab520a8dcb510cb, type: 3}
+  minEnemies: 2
+  maxEnemies: 5
 --- !u!1 &7839727296791125504
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,6 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 3f;
     public float detectionRange = 5f;
     private Transform player;
-    //private Rigidbody2D rb;
 
     void Start()
     {
@@ -15,31 +14,6 @@ public class EnemyAI : MonoBehaviour
         if (playerObj != null) player = playerObj.transform;
 
     }
-
-    /*
-    void FixedUpdate()
-    {
-        if (player != null) 
-        {
-            GameObject playerObj = GameObject.FindGameObjectsWithTag("Player")[0];
-            if (playerObj != null) player = playerObj.transform;
-            return; //If player is not found, do nothing
-        }
-
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distanceToPlayer < detectionRange)
-        {
-            //Calculate distance towards player
-            Vector2 direction = (player.position - transform.position).normalized;
-            rb.linearVelocity = direction * moveSpeed * Time.fixedDeltaTime;
-            //rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            rb.linearVelocity = Vector2.zero; //Stop moving if player is out of range
-        }
-    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
