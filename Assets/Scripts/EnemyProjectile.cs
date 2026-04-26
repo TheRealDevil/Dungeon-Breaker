@@ -24,6 +24,11 @@ public class EnemyProjectile : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //Later call a method on the player's health script to apply damage
+            PlayerHealth player = collision.GetComponent<PlayerHealth>();
+            if (player != null)
+            {
+                player.TakeDamage(5); //Example damage value, can be adjusted or made variable
+            }
             Debug.Log("Player hit by enemy projectile for " + damage + " damage!");
             Destroy(gameObject); //Destroy projectile on impact
         }

@@ -5,22 +5,36 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 3f;
     public float detectionRange = 5f;
     private Transform player;
+    private Animator anim;
 
     void Start()
     {
         //rb = GetComponent<Rigidbody2D>();
         //Find the player by tag
-        GameObject playerObj = GameObject.FindGameObjectsWithTag("Player")[0];
-        if (playerObj != null) player = playerObj.transform;
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+        }
+        else
+        {
+            Debug.LogWarning("EnemyAI: Player object not found with tag 'Player'.");
+        }
 
+        anim = GetComponent<Animator>(); //Get animator component for later use
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             //Damage player here (e.g., call a method on the player's health script)
             Debug.Log("Enemy hit the player!");
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(10); //Example damage value
+            }
         }
     }
 
@@ -35,10 +49,23 @@ public class EnemyAI : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
 
+
         if (distance < detectionRange)
         {
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
+
+            //New animator logic
+            if (anim != null) anim.SetBool("isMoving", true);
+
+            //Flip the sprite so it face the player
+            if (direction.x > 0) transform.localScale = new Vector3(1, 1, 1);
+            else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            //Tell the animator to stop walking
+            if (anim != null) anim.SetBool("isMoving", false);
         }
     }
 }
