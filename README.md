@@ -4,7 +4,7 @@ A procedural dungeon crawler built in Unity 6, featuring dynamic room generation
 
 ## 🚀 Features
 
-- **Procedural Generation**: Random walk algorithm that generates unique dungeon layouts with Start, Enemy, Treasure, and Boss rooms.
+- **Procedural Generation**: Random walk algorithm that generates unique dungeon layouts with Start, Enemy, and Boss rooms.
 - **Dynamic Room Logic**: Rooms automatically lock doors when the player enters and unlock only after all enemies are defeated.
 - **Combat System**: 
   - Mouse-aimed projectile system using the New Input System.
@@ -24,7 +24,6 @@ A procedural dungeon crawler built in Unity 6, featuring dynamic room generation
 - `BoardManager.cs`: Handles tilemap-based floor generation.
 - `DungeonGenerator.cs`: The "brain" that maps out the room positions and types.
 - `RoomController.cs`: Manages individual room states, door locking, and enemy spawning.
-- `EnemyHealth.cs`: Generic health script for damaging and destroying entities.
 
 ## 🎮 How to Play
 
