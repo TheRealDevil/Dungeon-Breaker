@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         // Add death effects here (e.g., animations, sound)
+        GameManager.Instance.AddScore(100); //100 Points per kill
         Destroy(gameObject);
     }
 }

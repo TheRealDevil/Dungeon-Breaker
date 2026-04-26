@@ -17,15 +17,16 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {   
-        //Ignore collisions with player, other bullets, and trigger colliders (e.g., for pickups)
-        if (other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West")) Destroy(gameObject); //Destroy bullet if it hits a door, since doors are not solid but we still want bullets to be destroyed on impact with them
-        if (other.CompareTag("Player") || other.CompareTag("EnemyBullet") || other.isTrigger) return; 
-
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<EnemyHealth>()?.TakeDamage(damage); //Damage enemy if it has EnemyHealth component
             Destroy(gameObject); //Destroy bullet on impact
         }
+        //Ignore collisions with player, other bullets, and trigger colliders (e.g., for pickups)
+        if (other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West")) Destroy(gameObject); //Destroy bullet if it hits a door, since doors are not solid but we still want bullets to be destroyed on impact with them
+        if (other.CompareTag("Player") || other.CompareTag("EnemyBullet") || other.isTrigger) return; 
+
+        
         else if (other.GetComponent<UnityEngine.Tilemaps.Tilemap>() != null)
         {
             if (other.gameObject.name.Contains("Walls") || other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West"))

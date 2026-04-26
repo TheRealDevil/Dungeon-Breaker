@@ -23,8 +23,8 @@ public class EnemyAI : MonoBehaviour
 
         anim = GetComponent<Animator>(); //Get animator component for later use
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("Enemy collided with: " + collision.gameObject.name);
 
@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
         {
             //Damage player here (e.g., call a method on the player's health script)
             Debug.Log("Enemy hit the player!");
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(5); //Example damage value
