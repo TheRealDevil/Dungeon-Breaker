@@ -196,4 +196,4 @@ MonoBehaviour:
   moveSpeed: 5
   stopDistance: 10
   fireRate: 1
-  bulletPrefab: {fileID: 658005920882495608, guid: d8754997d16a3bc42908397542fade1e, type: 3}
+  bulletPrefab: {fileID: 658005920882495608, guid: 1b66544eec6c27b48b30cd0f8686a742, type: 3}

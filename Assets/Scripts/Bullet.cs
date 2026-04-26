@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -17,27 +16,35 @@ public class Bullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {
+    {   
+        //Ignore collisions with player, other bullets, and trigger colliders (e.g., for pickups)
+        if (other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West")) Destroy(gameObject); //Destroy bullet if it hits a door, since doors are not solid but we still want bullets to be destroyed on impact with them
+        if (other.CompareTag("Player") || other.CompareTag("EnemyBullet") || other.isTrigger) return; 
+
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<EnemyHealth>()?.TakeDamage(damage); //Damage enemy if it has EnemyHealth component
             Destroy(gameObject); //Destroy bullet on impact
-            /*
-            EnemyHealth health = other.GetComponent<EnemyHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-
-            Destroy(gameObject); //Destroy bullet on impact
-            /*
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(damage);
-            }
-            Destroy(gameObject); //Destroy bullet on impact*/
         }
+        else if (other.GetComponent<UnityEngine.Tilemaps.Tilemap>() != null)
+        {
+            if (other.gameObject.name.Contains("Walls") || other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West"))
+            {
+                //Optional: Add wall hit effects here (e.g., particles, sound)
+                Debug.Log("Bullet hit a wall!");
+                Destroy(gameObject); //Destroy bullet on impact with walls
+            }
+        }
+        /*
+        else if (other.CompareTag("Player"))
+        {
+            //If it detects the player do nothing, we dont want the player to be damaged by their own bullets
+            return;
+        }
+        else
+        {
+            Destroy(gameObject); //Destroy bullet on impact with walls or other objects
+        }*/
     }
 
     
