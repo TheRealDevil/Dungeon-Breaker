@@ -88,13 +88,8 @@ public class RoomController : MonoBehaviour
             else if (roomType == DungeonGenerator.RoomType.Boss)
             {
                 CloseDoors();
-                SpawnEnemies(); //You can replace this with a different function to spawn a boss instead of regular enemies
+                SpawnBoss(); //You can replace this with a different function to spawn a boss instead of regular enemies
                 isCombatActive = true;
-            }
-            else if (roomType == DungeonGenerator.RoomType.Treasure)
-            {
-                //Implement treasure room logic here (e.g., spawn chests, give rewards)
-                Debug.Log("Entered a treasure room! Implement treasure logic here.");
             }
         }
     }
@@ -156,13 +151,33 @@ public class RoomController : MonoBehaviour
             }
         }
     }
+    [Header("Boss and portal prefabs")]
+    public GameObject bossPrefab;
+    public GameObject portalPrefab;
+
+    void SpawnBoss()
+    {
+        Debug.Log("Boss spawned");
+
+        //Spawn the boss in the centre of the room
+        GameObject boss = Instantiate(bossPrefab, transform.position, Quaternion.identity);
+        boss.transform.parent = this.transform;
+        activeEnemies.Add(boss);
+    }
 
     //Function called when all enemies in the room are defeated
-    void RoomCleared()
+    public void RoomCleared()
     {
         isCleared = true;
         playerInside = false;
         OpenDoors();
         Debug.Log("Room cleared. Doors are now open.");
+
+        if (roomType == DungeonGenerator.RoomType.Boss)
+        {
+            Debug.Log("Boss defeated");
+            //Spawn the portal prefab in the center
+            Instantiate(portalPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

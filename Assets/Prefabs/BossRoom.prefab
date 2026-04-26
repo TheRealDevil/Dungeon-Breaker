@@ -2578,9 +2578,11 @@ MonoBehaviour:
   southWall: {fileID: 4584691054739662495}
   eastWall: {fileID: 5209807562822867862}
   westWall: {fileID: 7937801756121230487}
-  enemyPrefab: {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
-  minEnemies: 1
-  maxEnemies: 3
+  enemyPrefab: []
+  minEnemies: 0
+  maxEnemies: 0
+  bossPrefab: {fileID: 3635093369696606961, guid: 6be984798c4af4543ab520a8dcb510cb, type: 3}
+  portalPrefab: {fileID: 0}
 --- !u!1 &4016049064723323496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,9 +3574,14 @@ MonoBehaviour:
   southWall: {fileID: 4584691054739662495}
   eastWall: {fileID: 5209807562822867862}
   westWall: {fileID: 7937801756121230487}
-  enemyPrefab: {fileID: 3635093369696606961, guid: 445df28c3bc8f5546b259d3f6e7bd450, type: 3}
+  enemyPrefab:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   minEnemies: 1
   maxEnemies: 3
+  bossPrefab: {fileID: 0}
+  portalPrefab: {fileID: 0}
 --- !u!1 &7937801756121230487
 GameObject:
   m_ObjectHideFlags: 0
