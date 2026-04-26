@@ -35,17 +35,5 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject); //Destroy bullet on impact with walls
             }
         }
-        /*
-        else if (other.CompareTag("Player"))
-        {
-            //If it detects the player do nothing, we dont want the player to be damaged by their own bullets
-            return;
-        }
-        else
-        {
-            Destroy(gameObject); //Destroy bullet on impact with walls or other objects
-        }*/
     }
-
-    
 }

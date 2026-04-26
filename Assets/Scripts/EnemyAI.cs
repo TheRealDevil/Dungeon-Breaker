@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Enemy collided with: " + collision.gameObject.name);
+
         if (collision.gameObject.CompareTag("Player"))
         {
             //Damage player here (e.g., call a method on the player's health script)
@@ -33,7 +35,7 @@ public class EnemyAI : MonoBehaviour
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(10); //Example damage value
+                playerHealth.TakeDamage(5); //Example damage value
             }
         }
     }
