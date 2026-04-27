@@ -26,11 +26,18 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject bossRoomPrefab;
     public GameObject treasureRoomPrefab;
 
+    [Header("Boss and portal entities")]
+    public GameObject bossEntityPrefab;
+    public GameObject portalEntityPrefab;
+
     //Saves the whole layout of the dungeon
     private List<RoomData> dungeonLayout = new List<RoomData>();
 
     void Start()
     {
+        if (bossEntityPrefab == null) Debug.Log("The generator slot is empty the milisecond the game starts");
+        else Debug.Log("The generator has the boss. the problem is happening later");
+
         GenerateBlueprint();
         SpawnRooms();
         SpawnHallways();
@@ -92,12 +99,25 @@ public class DungeonGenerator : MonoBehaviour
                 newRoom.name = $"{room.type} Room ({room.gridPos.x}, {room.gridPos.y})";
                 newRoom.transform.parent = this.transform; //Organization in the hierarchy
 
-                RoomController controller = newRoom.GetComponent<RoomController>();
-                if (controller != null)
+                RoomController[] controllers = newRoom.GetComponentsInChildren<RoomController>();
+                foreach (RoomController controller in controllers)
                 {
                     controller.SetupRoom(room.gridPos, occupiedPositions);
                     controller.isStartRoom = room.type == RoomType.Start;
                     controller.roomType = room.type;
+
+                    if (room.type == RoomType.Start && controller.playerSpawnPoint != null)
+                    {
+                        GameObject player = GameObject.FindWithTag("Player");
+                        if (player != null)
+                        {
+                            player.transform.position = controller.playerSpawnPoint.position;
+                            Debug.Log("Player snapped to the start room");
+                        }
+                    }
+
+                    controller.bossPrefab = this.bossEntityPrefab;
+                    controller.portalPrefab = this.portalEntityPrefab;
                 }
             }
             else

@@ -12,6 +12,10 @@ public class RoomController : MonoBehaviour
     private bool isCombatActive = false; //Flag to check if combat is active in the room
     public DungeonGenerator.RoomType roomType; //Type of the room (e.g., enemy, boss, treasure)
 
+    [Header("Spawn Points")]
+    public Transform bossSpawnPoint;
+    public Transform playerSpawnPoint;
+
     void Awake()
     {
         isCleared = false;
@@ -157,12 +161,21 @@ public class RoomController : MonoBehaviour
 
     void SpawnBoss()
     {
-        Debug.Log("Boss spawned");
+        if (bossPrefab != null)
+        {
+            Debug.Log("Boss spawned");
+            GameObject boss = Instantiate(bossPrefab, bossSpawnPoint.position, Quaternion.identity);
+            boss.transform.parent = this.transform;
 
-        //Spawn the boss in the centre of the room
-        GameObject boss = Instantiate(bossPrefab, transform.position, Quaternion.identity);
-        boss.transform.parent = this.transform;
-        activeEnemies.Add(boss);
+            BossAI bossAI = boss.GetComponent<BossAI>();
+            if (bossAI != null) bossAI.roomOwner = this;
+
+            activeEnemies.Add(boss);
+        }
+        else
+        {
+            Debug.Log("Injetion failed");
+        }
     }
 
     //Function called when all enemies in the room are defeated
@@ -177,7 +190,7 @@ public class RoomController : MonoBehaviour
         {
             Debug.Log("Boss defeated");
             //Spawn the portal prefab in the center
-            Instantiate(portalPrefab, transform.position, Quaternion.identity);
+            Instantiate(portalPrefab, bossSpawnPoint.position, Quaternion.identity);
         }
     }
 }

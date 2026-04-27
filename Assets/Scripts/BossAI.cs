@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BossAI : MonoBehaviour
 {
+    //[Header("Boss Settings")]
     public float moveSpeed = 2f;
     public int bossScoreValue = 1000;
     private Transform player;

@@ -2544,6 +2544,7 @@ Transform:
   - {fileID: 130881016659357116}
   - {fileID: 5785495205086639302}
   - {fileID: 4263341966284824082}
+  - {fileID: 4377823347190072218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &4669263767665487153
@@ -2574,15 +2575,17 @@ MonoBehaviour:
   isCleared: 0
   isStartRoom: 0
   roomType: 2
+  bossSpawnPoint: {fileID: 4377823347190072218}
   northWall: {fileID: 8871881794776438665}
   southWall: {fileID: 4584691054739662495}
   eastWall: {fileID: 5209807562822867862}
   westWall: {fileID: 7937801756121230487}
-  enemyPrefab: []
-  minEnemies: 0
-  maxEnemies: 0
-  bossPrefab: {fileID: 3635093369696606961, guid: 6be984798c4af4543ab520a8dcb510cb, type: 3}
-  portalPrefab: {fileID: 0}
+  enemyPrefab:
+  - {fileID: 1013428897341571958, guid: f1057b7a8d652254182d601c2b6a3cde, type: 3}
+  minEnemies: 1
+  maxEnemies: 1
+  bossPrefab: {fileID: 1013428897341571958, guid: f1057b7a8d652254182d601c2b6a3cde, type: 3}
+  portalPrefab: {fileID: 3677836246263064761, guid: 2a1e6a30e4bf55148ada1d3ad24bd68e, type: 3}
 --- !u!1 &4016049064723323496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3573,7 @@ MonoBehaviour:
   isCleared: 0
   isStartRoom: 0
   roomType: 2
+  bossSpawnPoint: {fileID: 4377823347190072218}
   northWall: {fileID: 8871881794776438665}
   southWall: {fileID: 4584691054739662495}
   eastWall: {fileID: 5209807562822867862}
@@ -3720,6 +3724,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 3}
   m_EdgeRadius: 0
+--- !u!1 &8166294370094713615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4377823347190072218}
+  m_Layer: 0
+  m_Name: BossSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4377823347190072218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166294370094713615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.12, y: -3.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1049855601418921155}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8218179647576496378
 GameObject:
   m_ObjectHideFlags: 0
