@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1444980827, guid: 3678b32267ada854fb1cb398e21843c9, type: 3}
+  m_Sprite: {fileID: 2224508841329540512, guid: 0e068fce5eef0724c8c16f52784f8439, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,8 +133,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.25}
-    oldSize: {x: 1, y: 2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.75, y: 0.875}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   moveSpeed: 5
-  detectionRange: 30
+  detectionRange: 20
 --- !u!95 &632383762492907519
 Animator:
   serializedVersion: 7
@@ -206,7 +206,7 @@ Animator:
   m_GameObject: {fileID: 3635093369696606961}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 047883eea7797b04281412ecc491cc9e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5bd70fae55b4019428c7a2b969a29fd4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -6,11 +6,13 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
+    private Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.dKey.isPressed) input.x += 1;
         moveInput = input.normalized; // Normalize to prevent faster diagonal movement
 
+        if (anim != null)
+        {
+            //If moveInput.magnitude > 0, we are moving
+            bool isMoving = moveInput.magnitude > 0;
+            anim.SetBool("isMoving", isMoving);
+        }
     }
 
     void FixedUpdate()

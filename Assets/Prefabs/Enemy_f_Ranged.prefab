@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemyAI
   moveSpeed: 5
-  stopDistance: 10
+  stopDistance: 5
   fireRate: 1
   bulletPrefab: {fileID: 658005920882495608, guid: 1b66544eec6c27b48b30cd0f8686a742, type: 3}
 --- !u!95 &5538809229082012781
