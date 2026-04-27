@@ -375,6 +375,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   score: 0
   scoreText: {fileID: 891589892}
+  globalBossPrefab: {fileID: 1013428897341571958, guid: f1057b7a8d652254182d601c2b6a3cde, type: 3}
+  globalPortalPrefab: {fileID: 3677836246263064761, guid: 2a1e6a30e4bf55148ada1d3ad24bd68e, type: 3}
 --- !u!4 &872377062
 Transform:
   m_ObjectHideFlags: 0
@@ -402,7 +404,7 @@ GameObject:
   - component: {fileID: 891589893}
   - component: {fileID: 891589892}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1873,6 +1875,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 872377062}
   - {fileID: 1846512445}
   - {fileID: 1347275933}
   - {fileID: 1335354180}
@@ -1884,6 +1887,5 @@ SceneRoots:
   - {fileID: 3489931489542247061}
   - {fileID: 810335368}
   - {fileID: 1056485181}
-  - {fileID: 872377062}
   - {fileID: 9031841139050913553}
   - {fileID: 1404098054890141547}

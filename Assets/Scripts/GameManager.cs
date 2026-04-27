@@ -14,8 +14,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("SUCCES: GameManager has awakened");
         if (Instance == null)
         {
+            Instance = this;
+
             DontDestroyOnLoad(gameObject);
 
             //Tell unity to run OnSceneLoaded ever time a new floor starts
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     void UpdateScoreUI()
     {
         if (scoreText != null) scoreText.text = "Score: " + score;
+        else Debug.LogWarning("Manager has points but the scoreText slot it empty");
     }
 
     void OnDestroy()

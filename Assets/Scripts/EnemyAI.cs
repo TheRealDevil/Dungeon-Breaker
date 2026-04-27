@@ -58,16 +58,17 @@ public class EnemyAI : MonoBehaviour
             transform.position += direction * moveSpeed * Time.deltaTime;
 
             //New animator logic
-            if (anim != null) anim.SetBool("isMoving", true);
+            //if (anim != null) anim.SetBool("isMoving", true);
 
             //Flip the sprite so it face the player
             if (direction.x > 0) transform.localScale = new Vector3(1, 1, 1);
             else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1);
         }
+        /*
         else
         {
             //Tell the animator to stop walking
             if (anim != null) anim.SetBool("isMoving", false);
-        }
+        }*/
     }
 }

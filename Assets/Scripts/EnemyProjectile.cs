@@ -17,7 +17,7 @@ public class EnemyProjectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Ignore collisions with other enemies or projectiles
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Projectile")) return;
+        if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet")) return;
         if (collision.gameObject.name.Contains("Door_North") || collision.gameObject.name.Contains("Door_South") || collision.gameObject.name.Contains("Door_East") || collision.gameObject.name.Contains("Door_West")) Destroy(gameObject);
         if (collision.isTrigger) return; //Ignore trigger colliders (e.g., for pickups)
         

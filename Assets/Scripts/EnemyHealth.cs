@@ -22,8 +22,22 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        // Add death effects here (e.g., animations, sound)
-        GameManager.Instance.AddScore(100); //100 Points per kill
+        BossAI boss = GetComponent<BossAI>();
+
+        //Check if the enemy is actually a boss
+        if (boss != null)
+        {
+            boss.Die();
+            return;
+        }
+
+        //Regualar enemy death
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(100); //100 Points per kill
+        }
+        else Debug.Log("Enemy dies but no GameManager was found to add points");
+       
         Destroy(gameObject);
     }
 }
