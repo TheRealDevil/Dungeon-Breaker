@@ -1,27 +1,74 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 40;
-    private int currentHealth;
-    public Slider healthBar; //Reference to UI health bar slider
+    [Header("Stats")]
+    public int maxHealth;
+    public int currentHealth; // Don't worry about the number in the Inspector
 
-    [Header("Invincibility Frames")]
-    public float iFrameDuration = 1.0f; //Duration of invincibility after taking damage
+    [Header("UI & Visuals")]
+    public Slider healthBar;
+    private SpriteRenderer sprite;
+    
+    public float iFrameDuration = 1f;
     private float iFrameTimer;
-    private SpriteRenderer sprite; //Reference to player's sprite renderer for visual feedback
+
+    public CharacterData myData;
 
     void Start()
     {
-        currentHealth = maxHealth;
         sprite = GetComponent<SpriteRenderer>();
+
+        if (GameManager.Instance != null && GameManager.Instance.selectedCharacter != null)
+        {
+            myData = GameManager.Instance.selectedCharacter;
+        }
+
+        if (myData != null)
+        {
+            maxHealth = myData.maxHealth;
+            sprite.sprite = myData.characterSprite; //Automatical changes the look of the character
+        }
+
+        //Ensure the GameManager has a starting health
+        if (GameManager.Instance != null && GameManager.Instance.savedPlayerHealth == -1)
+        {
+            GameManager.Instance.savedPlayerHealth = maxHealth;
+        }
+
+        //Find the bar on the new floor
+        healthBar = FindAnyObjectByType<Slider>();
         if (healthBar != null)
         {
-            healthBar.minValue = 0;
             healthBar.maxValue = maxHealth;
-            healthBar.value = maxHealth; //Initialize health bar UI
+        }
+    }
+
+    void Update()
+    {
+        //This prevents "Inspector Defaults" or other scripts from resetting it.
+        if (GameManager.Instance != null)
+        {
+            currentHealth = GameManager.Instance.savedPlayerHealth;
+        }
+
+        if (healthBar != null)
+        {
+            healthBar.value = currentHealth;
+        }
+
+        //Invincibility flicker logic
+        if (iFrameTimer > 0)
+        {
+            iFrameTimer -= Time.deltaTime;
+            float flicker = Mathf.Sin(Time.time * 20) > 0 ? 1f : 0.3f;
+            sprite.color = new Color(1, 1, 1, flicker);
+        }
+        else
+        {
+            sprite.color = new Color(1, 1, 1, 1);
         }
     }
 
@@ -29,39 +76,23 @@ public class PlayerHealth : MonoBehaviour
     {
         if (iFrameTimer > 0) return;
 
-        currentHealth -= damage;
-        iFrameTimer = iFrameDuration; //Start invincibility timer
-        Debug.Log("Player took " + damage + " damage! Current health: " + currentHealth);
-
-        if (healthBar != null)
+        if (GameManager.Instance != null)
         {
-            healthBar.value = currentHealth; //Update health bar UI
+            GameManager.Instance.savedPlayerHealth -= damage;
+            currentHealth = GameManager.Instance.savedPlayerHealth;
         }
+
+        iFrameTimer = iFrameDuration;
+
         if (currentHealth <= 0) Die();
-    }
-
-    void Update()
-    {
-        if (iFrameTimer > 0)
-        {
-            iFrameTimer -= Time.deltaTime;
-
-            //Visual feedback: Flicer player sprite during invincibility frames
-            float flicker = Mathf.Sin(Time.time * 20) > 0 ? 1f : 0.3f; //Flicker between normal and semi-transparent
-            sprite.color = new Color(1, 1, 1, flicker);
-        }
-        else
-        {
-            //Reset sprite color when not invincible
-            sprite.color = new Color(1, 1, 1, 1);
-        }
     }
 
     void Die()
     {
-        //Add death effects here later
-        Debug.Log("Player has died!");
-        //For now restart the current floor
+        if (GameManager.Instance != null) 
+        {
+            GameManager.Instance.savedPlayerHealth = -1; //Reset for a fresh game
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

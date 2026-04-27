@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0683ed4a0789c741b8e8477a82facfa, type: 3}
+  m_Name: MaskedGuy
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  className: Desert Fighter
+  maxHealth: 60
+  moveSpeed: 5
+  attackDamage: 5
+  characterSprite: {fileID: -4166580829966953713, guid: 1259de5902199d04ca64f9e90180a615, type: 3}
+  bulletPrefab: {fileID: 658005920882495608, guid: d8754997d16a3bc42908397542fade1e, type: 3}
+  fireRate: 0.5
+  damage: 5
+  animatorController: {fileID: 22100000, guid: 501a0178136e2e94d9e6b87d94015849, type: 2}

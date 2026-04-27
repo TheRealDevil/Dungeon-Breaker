@@ -3,14 +3,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    //public Transform firePoint;
-    public float nextFireTime = 0f;
-    public float fireRate = 0.5f; //Time in seconds between shots
+    private float nextFireTime;
+    private PlayerHealth healthScript;
+
+
+    void Start()
+    {
+        healthScript = GetComponent<PlayerHealth>();
+    }
 
     void Update()
     {
-        bool isShooting = Keyboard.current.spaceKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame;
+        //Safety check to ensure the data is loaded before trying to shoot
+        if (healthScript.myData == null) return;
 
         //Get mouse position in screen coordinates
         Vector2 mousePosition = Mouse.current.position.ReadValue(); 
@@ -21,11 +26,13 @@ public class PlayerShoot : MonoBehaviour
         //Calculate direction from player to mouse
         Vector2 shootDirection = (worldMousePos - transform.position).normalized; 
 
+        bool isFiring = Keyboard.current.spaceKey.isPressed || Mouse.current.leftButton.isPressed;
+
         //Check for input
-        if ((Keyboard.current.spaceKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame) && Time.time >= nextFireTime)
+        if (isFiring && Time.time >= nextFireTime)
         {
             Shoot(shootDirection);
-            nextFireTime = Time.time + fireRate; //Update the next allowed fire time
+            nextFireTime = Time.time + healthScript.myData.fireRate; //Update the next allowed fire time
         }
     }
 
@@ -34,6 +41,6 @@ public class PlayerShoot : MonoBehaviour
         //Calculate angle for bullet rotation in degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         //Spawn bullet with correct rotation
-        Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, angle));
+        Instantiate(healthScript.myData.bulletPrefab, transform.position, Quaternion.Euler(0, 0, angle));
     }
 }

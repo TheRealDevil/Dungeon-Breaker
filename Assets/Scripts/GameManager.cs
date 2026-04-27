@@ -6,7 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public int score = 0;
+    public int savedPlayerHealth = -1;
     public TextMeshProUGUI scoreText; //Reference to UI text element for score display
+    public CharacterData selectedCharacter;
+
+
 
     [Header("Global entities")]
     public GameObject globalBossPrefab;

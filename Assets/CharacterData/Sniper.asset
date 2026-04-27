@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0683ed4a0789c741b8e8477a82facfa, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  className: Marksman
+  maxHealth: 20
+  moveSpeed: 7
+  attackDamage: 10
+  characterSprite: {fileID: -7562686185726520778, guid: 77b3e44d44e7c284b94c5abe68750c24, type: 3}
+  bulletPrefab: {fileID: 658005920882495608, guid: 13db996cfb8c9af428db6a70f7c5035b, type: 3}
+  fireRate: 0.7
+  damage: 10
+  animatorController: {fileID: 22100000, guid: 26ec08a8dd069c9448899b791a1abc10, type: 2}

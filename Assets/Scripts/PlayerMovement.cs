@@ -3,16 +3,31 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    //public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator anim;
+
+    [Header("Character blueprit")]
+    public CharacterData myData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        if (GameManager.Instance != null && GameManager.Instance.selectedCharacter != null)
+        {
+            myData = GameManager.Instance.selectedCharacter;
+        }
+        if (myData != null)
+        {
+            if (anim != null && myData.animatorController != null)
+            {
+                anim.runtimeAnimatorController = myData.animatorController;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -38,6 +53,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveInput * myData.moveSpeed * Time.fixedDeltaTime);
     }
 }
