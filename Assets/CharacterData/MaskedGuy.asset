@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   className: Desert Fighter
   maxHealth: 60
-  moveSpeed: 5
+  moveSpeed: 6
   attackDamage: 5
   characterSprite: {fileID: -4166580829966953713, guid: 1259de5902199d04ca64f9e90180a615, type: 3}
   bulletPrefab: {fileID: 658005920882495608, guid: d8754997d16a3bc42908397542fade1e, type: 3}

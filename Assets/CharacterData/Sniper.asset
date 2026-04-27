@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   className: Marksman
   maxHealth: 20
-  moveSpeed: 7
+  moveSpeed: 9
   attackDamage: 10
   characterSprite: {fileID: -7562686185726520778, guid: 77b3e44d44e7c284b94c5abe68750c24, type: 3}
   bulletPrefab: {fileID: 658005920882495608, guid: 13db996cfb8c9af428db6a70f7c5035b, type: 3}

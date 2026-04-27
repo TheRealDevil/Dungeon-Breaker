@@ -87,12 +87,26 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
 
+    [Header("DeathUI")]
+    public GameObject deathScreen;
+    public TMPro.TextMeshProUGUI finalScoreDisplay;
+
     void Die()
-    {
-        if (GameManager.Instance != null) 
+    {   
+        //Show death screen
+        if (deathScreen != null)
         {
-            GameManager.Instance.savedPlayerHealth = -1; //Reset for a fresh game
+            deathScreen.SetActive(true);
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        //Display the final score from the manager
+        if (finalScoreDisplay != null && GameManager.Instance != null)
+        {
+            finalScoreDisplay.text = "Score: " + GameManager.Instance.score;
+
+            GameManager.Instance.CheckForHighScore();
+        }
+
+        GetComponent<PlayerMovement>().enabled = false;
     }
 }

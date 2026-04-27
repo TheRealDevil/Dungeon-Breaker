@@ -56,6 +56,18 @@ public class GameManager : MonoBehaviour
         else Debug.LogWarning("Manager has points but the scoreText slot it empty");
     }
 
+    public void CheckForHighScore()
+    {
+        int savedHighScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (score > savedHighScore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            PlayerPrefs.Save(); //Saves the data to disk
+            Debug.Log("New High Score: " + score);
+        }
+    }
+
     void OnDestroy()
     {
         //Cleaup the event listener if the game is completely closed

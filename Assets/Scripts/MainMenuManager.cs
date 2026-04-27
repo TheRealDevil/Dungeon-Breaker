@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public TextMeshProUGUI highScoreDisplay;
+
     [Header("Panels")]
     public GameObject mainPanel;
     public GameObject characterPanel;
@@ -12,9 +14,21 @@ public class MainMenuManager : MonoBehaviour
     public CharacterData maskData;
     public CharacterData sniperData;
 
+
     void Start()
     {
         ShowMainPanel();
+        UpdateHighScoreDisplay();
+    }
+
+    void UpdateHighScoreDisplay()
+    {
+        if (highScoreDisplay != null)
+        {
+            //Fetch the saved score form the PlayerPrefs
+            int highScore = PlayerPrefs.GetInt("HighScore", 0);
+            highScoreDisplay.text = "Best Run: " + highScore.ToString();
+        }
     }
 
     //--Panel Nav--
