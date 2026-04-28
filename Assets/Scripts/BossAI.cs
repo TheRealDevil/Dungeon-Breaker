@@ -14,9 +14,6 @@ public class BossAI : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player")?.transform;
         anim = GetComponent<Animator>();
-
-        //Make the boss look bigger than regulat enemies
-        transform.localScale = new Vector3(2.5f, 2.5f, 1f);
     }
 
     void Update()
@@ -30,7 +27,14 @@ public class BossAI : MonoBehaviour
             if (anim != null) anim.SetBool("isMoving", true);
 
             //Flip sprite
-            transform.localScale = new Vector3(direction.x > 0 ? 2.5f : -2.5f, 2.5f, 1f);
+            if (direction.x > 0.1f)
+            {
+                transform.localScale = new Vector3(2.5f, 2.5f, 1f);
+            }
+            else if (direction.x < -0.1f)
+            {
+                transform.localScale = new Vector3(-2.5f, 2.5f, 1f);
+            }
         }
     }
 

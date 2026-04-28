@@ -31,7 +31,6 @@ public class Bullet : MonoBehaviour
         {
             if (other.gameObject.name.Contains("Walls") || other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West"))
             {
-                //Optional: Add wall hit effects here (e.g., particles, sound)
                 Debug.Log("Bullet hit a wall!");
                 Destroy(gameObject); //Destroy bullet on impact with walls
             }

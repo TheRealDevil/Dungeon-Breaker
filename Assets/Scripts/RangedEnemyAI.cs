@@ -30,8 +30,6 @@ public class RangedEnemyAI : MonoBehaviour
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
 
-            //if (anim != null) anim.SetBool("isMoving", true); //Tell animator to play walking animation
-
             if (direction.x > 0) transform.localScale = new Vector3(1, 1, 1);
             else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1);
         }
@@ -40,12 +38,6 @@ public class RangedEnemyAI : MonoBehaviour
             Shoot();
             nextFireTime = Time.time + fireRate; //Update next fire time
         }
-        /*
-        else
-        {
-            //Tell the animator to stop walking
-            if (anim != null) anim.SetBool("isMoving", false);
-        }*/
     }
 
     void Shoot()

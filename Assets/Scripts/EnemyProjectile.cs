@@ -36,7 +36,6 @@ public class EnemyProjectile : MonoBehaviour
         {
             if (collision.gameObject.name.Contains("Walls") || collision.gameObject.name.Contains("Door_North") || collision.gameObject.name.Contains("Door_South") || collision.gameObject.name.Contains("Door_East") || collision.gameObject.name.Contains("Door_West"))
             {
-                //Optional: Add wall hit effects here (e.g., particles, sound)
                 Debug.Log("Projectile hit a wall!");
                 Destroy(gameObject); //Destroy projectile on impact with walls
             }

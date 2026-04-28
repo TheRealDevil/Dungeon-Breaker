@@ -1,4 +1,3 @@
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -24,14 +23,12 @@ public class EnemyAI : MonoBehaviour
 
         anim = GetComponent<Animator>(); //Get animator component for later use
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
     private void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("Enemy collided with: " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Damage player here (e.g., call a method on the player's health script)
             Debug.Log("Enemy hit the player!");
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
@@ -57,10 +54,6 @@ public class EnemyAI : MonoBehaviour
         {
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
-/*
-            //Flip the sprite so it face the player
-            if (direction.x > 0) transform.localScale = new Vector3(1, 1, 1);
-            else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1);*/
 
             if (direction.x > 0.1f)
             {
