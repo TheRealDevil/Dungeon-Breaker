@@ -22,18 +22,19 @@ public class Bullet : MonoBehaviour
             other.GetComponent<EnemyHealth>()?.TakeDamage(damage); //Damage enemy if it has EnemyHealth component
             Destroy(gameObject); //Destroy bullet on impact
         }
-        //Ignore collisions with player, other bullets, and trigger colliders (e.g., for pickups)
-        if (other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West")) Destroy(gameObject); //Destroy bullet if it hits a door, since doors are not solid but we still want bullets to be destroyed on impact with them
-        if (other.CompareTag("Player") || other.CompareTag("EnemyBullet") || other.isTrigger) return; 
+        
 
         
         else if (other.GetComponent<UnityEngine.Tilemaps.Tilemap>() != null)
         {
-            if (other.gameObject.name.Contains("Walls") || other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West"))
+            if (other.gameObject.name.Contains("Walls") || other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West") || other.gameObject.name.Contains("WWall") || other.gameObject.name.Contains("EWall") || other.gameObject.name.Contains("SWall") || other.gameObject.name.Contains("NWall"))
             {
                 Debug.Log("Bullet hit a wall!");
                 Destroy(gameObject); //Destroy bullet on impact with walls
             }
         }
+        //Ignore collisions with player, other bullets, and trigger colliders (e.g., for pickups)
+        if (other.gameObject.name.Contains("Door_North") || other.gameObject.name.Contains("Door_South") || other.gameObject.name.Contains("Door_East") || other.gameObject.name.Contains("Door_West")) Destroy(gameObject); //Destroy bullet if it hits a door, since doors are not solid but we still want bullets to be destroyed on impact with them
+        if (other.CompareTag("Player") || other.CompareTag("EnemyBullet") || other.isTrigger) return; 
     }
 }

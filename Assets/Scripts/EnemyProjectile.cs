@@ -34,7 +34,7 @@ public class EnemyProjectile : MonoBehaviour
         }
         else if (collision.GetComponent<UnityEngine.Tilemaps.Tilemap>() != null)
         {
-            if (collision.gameObject.name.Contains("Walls") || collision.gameObject.name.Contains("Door_North") || collision.gameObject.name.Contains("Door_South") || collision.gameObject.name.Contains("Door_East") || collision.gameObject.name.Contains("Door_West"))
+            if (collision.gameObject.name.Contains("Walls") || collision.gameObject.name.Contains("Door_North") || collision.gameObject.name.Contains("Door_South") || collision.gameObject.name.Contains("Door_East") || collision.gameObject.name.Contains("Door_West") || collision.gameObject.name.Contains("WWall") || collision.gameObject.name.Contains("EWall") || collision.gameObject.name.Contains("SWall") || collision.gameObject.name.Contains("NWall"))
             {
                 Debug.Log("Projectile hit a wall!");
                 Destroy(gameObject); //Destroy projectile on impact with walls
