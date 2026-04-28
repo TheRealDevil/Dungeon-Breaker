@@ -1,13 +1,20 @@
+using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 20;
     private int currentHealth;
+
+    [Header("Visuals")]
     private SpriteRenderer sprite;
+    public float flickerDuration = 0.1f;
+    private float flickerTimer;
 
     void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
     }
 
@@ -15,13 +22,23 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
-        float flicker = Mathf.Sin(Time.time * 20) > 0 ? 1f : 0.3f;
-        sprite.color = new Color(1, 1, 1, flicker);
+        flickerTimer = flickerDuration;
 
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    void Update()
+    {
+        if (flickerTimer > 0)
+        {
+            flickerTimer -= Time.deltaTime;
+            bool isRed = Mathf.Sin(Time.time * 40) > 0;
+            sprite.color = isRed ? Color.red : Color.white;
+        }
+        else sprite.color = Color.white;
     }
 
     private void Die()

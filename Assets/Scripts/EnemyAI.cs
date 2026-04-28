@@ -1,3 +1,4 @@
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -9,7 +10,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+
         //Find the player by tag
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
@@ -56,19 +57,19 @@ public class EnemyAI : MonoBehaviour
         {
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
-
-            //New animator logic
-            //if (anim != null) anim.SetBool("isMoving", true);
-
+/*
             //Flip the sprite so it face the player
             if (direction.x > 0) transform.localScale = new Vector3(1, 1, 1);
-            else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+            else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1);*/
+
+            if (direction.x > 0.1f)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (direction.x < -0.1f)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
-        /*
-        else
-        {
-            //Tell the animator to stop walking
-            if (anim != null) anim.SetBool("isMoving", false);
-        }*/
     }
 }

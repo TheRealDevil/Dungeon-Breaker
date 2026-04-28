@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator anim;
+    private bool isFacingRight;
 
     [Header("Character blueprit")]
     public CharacterData myData;
@@ -14,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        isFacingRight = false;
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -47,6 +52,15 @@ public class PlayerMovement : MonoBehaviour
             //If moveInput.magnitude > 0, we are moving
             bool isMoving = moveInput.magnitude > 0;
             anim.SetBool("isMoving", isMoving);
+        }
+
+        if (moveInput.x > 0.1f)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (moveInput.x < -0.1f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
