@@ -1,44 +1,43 @@
 # ⚔️ Dungeon Breaker
-A top-down 2D action game built in Unity. Navigate a dangerous dungeon, choose your hero, and survive the boss encounter while racking up a high score.
+Akční 2D hra z pohledem shora, postavená v Unity. Projděte si nebezpečný dungeon, vyberte si svého hrdinu a přežijte střetnutí s bossem, zatímco nasbíráte co nejvyšší skóre.
 
-## 🚀 Features
+## 🚀 Funkce
 
-- **Procedural Generation**: Random walk algorithm that generates unique dungeon layouts with Start, Enemy, and Boss rooms.
-- **Dynamic Room Logic**: Rooms automatically lock doors when the player enters and unlock only after all enemies are defeated.
-- **Character Selection System**: Choose between unique character classes (Desert Knight and Marksman) with distinct stats and visuals driven by ScriptableObjects.
-- **Persistent Game Management**: A Singleton GameManager tracks your health, score, and selected character across multiple scenes and floors.
-- **Combat System**: 
-  - Mouse-aimed projectile system using the New Input System.
-  - Player iFrames: Visual flickering effect providing temporary invincibility after taking damage.
-  - Multiple enemy types (Melee Chasers and Ranged Shooters).
-  - Enemy Damage Flash: Enemies flash red when hit, using a custom math-based flicker logic for instant player feedback.
-  - Smart Enemy AI: Enemies detect and chase the player when they enter a specific range, featuring automatic sprite-flipping to always face their target.
-- **Physics-Based Movement**: Custom 2D movement for players and enemies using Rigidbody2D.
+- **Procedurální generování**: Random Walk algoritmus, který generuje unikátní rozvržení dungeonů s místnostmi Start, Enemy a Boss.
+- **Dynamická logika místností**: Dveře místností se automaticky zamknou, když hráč vstoupí, a odemknou se až po porážce všech nepřátel.
+- **Systém výběru postav**: Vyberte si mezi unikátními třídami postav (Desert Knight a Marksman) s odlišnými statistikami a vizuály řízenými ScriptableObjects.
+- **Persistent Game Management**: GameManager sleduje vaše zdraví, skóre a vybranou postavu napříč více scénami a patry.
+- **Bojový systém**:
+  - Systém projektilů mířených myší s využitím nového vstupního systému.
+  - iFrames hráče: Vizuální blikající efekt poskytující dočasnou neporazitelnost po udělení poškození.
+  - Více typů nepřátel (bojovníci na blízko a střelci na dálku).
+  - Inteligentní umělá inteligence nepřátel: Nepřátelé detekují a pronásledují hráče, když vstoupí do určitého dosahu, s automatickým přepínáním sprite, aby se vždy otočili čelem k cíli.
+- **Pohyb založený na fyzice**: 2D pohyb pro hráče a nepřátele pomocí Rigidbody2D.
 
-## 🛠️ Technical Details
+## 🛠️ Technické detaily
 
 - **Engine**: Unity 6 (6000.0.38f1 LTS)
-- **Input**: Unity Input System Package
-- **Rendering**: 2D Universal Render Pipeline (URP) or Standard 2D
-- **Scripting**: C#
+- **Vstup**: Unity Input System Package
+- **Rendering**: 2D Universal Render Pipeline (URP) nebo Standard 2D
+- **Skriptování**: C#
 
-## 📂 Project Structure
+## 📂 Struktura projektu
 
-- `BoardManager.cs`: Handles tilemap-based floor generation.
-- `DungeonGenerator.cs`: The "brain" that maps out the room positions and types.
-- `RoomController.cs`: Manages individual room states, door locking, and enemy spawning.
-- `GameManager.cs`	The central brain. Handles high scores, scene transitions, and cross-scene data persistence.
-- `CharacterData.cs`	A ScriptableObject blueprint for defining character stats and animator controllers.
+- `BoardManager.cs`: Zvládá generování podlah na základě dlaždicové mapy.
+- `DungeonGenerator.cs`: „Mozek“, který mapuje pozice a typy místností.
+- `RoomController.cs`: Spravuje stavy jednotlivých místností, zamykání dveří a objevování nepřátel.
+- `GameManager.cs` Centrální mozek. Zvládá vysoké skóre, přechody mezi scénami a perzistenci dat mezi scénami.
+- `CharacterData.cs` Plán ScriptableObject pro definování statistik postav a ovladačů animátorů.
 
-## 🎮 How to Play
+## 🎮 Jak hrát
 
-**Download**: Head to the Releases section and download the latest .zip file.
-**Extract**: Unzip the folder to your desktop.
-**Run**: Double-click the .exe to launch the game.
+**Stáhnout**: Přejděte do sekce Verze a stáhněte si nejnovější soubor .zip.
+**Rozbalit**: Rozbalte složku na plochu.
+**Spustit**: Dvojitým kliknutím na soubor .exe spusťte hru.
 
-- **Controlls**
-  1. **Move**: WASD keys.
-  2. **Aim**: Mouse cursor.
-  3. **Shoot**: Spacebar or Left Mouse Click. 
-  4. **Esc**: Return to Menu
-  5. **Goal**: Clear rooms to find the Boss room and progress to the next floor.
+- **Ovládání**
+1. **Pohyb**: Klávesy WASD.
+2. **Míření**: Kurzor myši.
+3. **Střelba**: Mezerník nebo kliknutí levým tlačítkem myši.
+4. **Esc**: Návrat do menu
+5. **Cíl**: Vyčistěte místnosti, abyste našli místnost s bossem a postupovali do dalšího patra.
