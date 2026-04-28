@@ -31,9 +31,9 @@ Akční 2D hra z pohledem shora, postavená v Unity. Projděte si nebezpečný d
 
 ## 🎮 Jak hrát
 
-- **Stáhnout**: Přejděte do sekce Verze a stáhněte si nejnovější soubor .zip.
+- **Stáhnout**: Přejděte do sekce Releases a stáhněte si nejnovější soubor .zip.
 - **Rozbalit**: Rozbalte složku na plochu.
-- **Spustit**: Dvojitým kliknutím na soubor .exe spusťte hru.
+- **Spustit**: Dvojitým kliknutím na soubor Rougelike.exe spusťte hru.
 
 
 - **Ovládání**
