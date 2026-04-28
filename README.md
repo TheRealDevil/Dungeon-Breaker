@@ -35,6 +35,7 @@ Akční 2D hra z pohledem shora, postavená v Unity. Projděte si nebezpečný d
 - **Rozbalit**: Rozbalte složku na plochu.
 - **Spustit**: Dvojitým kliknutím na soubor .exe spusťte hru.
 
+
 - **Ovládání**
 1. **Pohyb**: Klávesy WASD.
 2. **Míření**: Kurzor myši.
