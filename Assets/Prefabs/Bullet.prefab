@@ -84,12 +84,12 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6128512641766352853, guid: d95d326f8878b4b4081df23c1da5330a, type: 3}
+  m_Sprite: {fileID: 360694456973584391, guid: 7d8d0578ce9c8af4a8e5fc4edf228907, type: 3}
   m_Color: {r: 0.55443925, g: 0.6011689, b: 0.96981126, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3125, y: 0.5}
+  m_Size: {x: 0.65625, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -169,6 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd47b41dbaf9b74d8149a22094527b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  speed: 10
-  damage: 50
+  speed: 6
+  damage: 5
   lifetime: 3

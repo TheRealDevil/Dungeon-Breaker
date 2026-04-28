@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0e068fce5eef0724c8c16f52784f8439
+guid: cdd64720f3a58d6458443f20caea09c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2224508841329540512
-    second: Zombie_Idle_0
+      213: -4354309566175302091
+    second: portal3_o_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Zombie_Idle_0
+      name: portal3_o_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 7
-        width: 24
-        height: 28
+        x: 2
+        y: 1
+        width: 28
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0adb927510b0fde10800000000000000
-      internalID: 2224508841329540512
+      spriteID: 53e290a05826293c0800000000000000
+      internalID: -4354309566175302091
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Zombie_Idle_0: 2224508841329540512
+      portal3_o_0: -4354309566175302091
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

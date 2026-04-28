@@ -4,6 +4,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 20;
     private int currentHealth;
+    private SpriteRenderer sprite;
 
     void Start()
     {
@@ -13,6 +14,9 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        float flicker = Mathf.Sin(Time.time * 20) > 0 ? 1f : 0.3f;
+        sprite.color = new Color(1, 1, 1, flicker);
 
         if (currentHealth <= 0)
         {
