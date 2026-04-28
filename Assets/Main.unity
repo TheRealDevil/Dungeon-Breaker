@@ -2227,6 +2227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 872377062}
   - component: {fileID: 872377061}
+  - component: {fileID: 872377063}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2267,6 +2268,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &872377063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872377060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccab772ca5647840b066ebaff7b5225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuShortcut
 --- !u!1 &891589891
 GameObject:
   m_ObjectHideFlags: 0
