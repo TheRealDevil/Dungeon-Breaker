@@ -36,7 +36,7 @@ A top-down 2D action game built in Unity. Navigate a dangerous dungeon, choose y
 **Extract**: Unzip the folder to your desktop.
 **Run**: Double-click the .exe to launch the game.
 
--**Controlls**
+- **Controlls**
   1. **Move**: WASD keys.
   2. **Aim**: Mouse cursor.
   3. **Shoot**: Spacebar or Left Mouse Click. 
